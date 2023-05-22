@@ -1,6 +1,8 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
+import { Card } from "antd";
+const { Meta } = Card;
 
 interface Continent {
   code: string;
@@ -24,12 +26,24 @@ const Continents = () => {
   if (error) return <p>Error :(</p>;
 
   return (
-    data.continents.map(({ code, name }: Continent) => (
-    <div key={code}>
-      <h3>{name}</h3>
+    <div className="flex justify-center gap-8">
+      {data.continents.map(({ code, name }: Continent) => (
+        <Card
+          key={code}
+          hoverable
+          style={{ width: 240 }}
+          cover={
+            <img
+              alt="example"
+              src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+            />
+          }
+        >
+          <Meta title={name} />
+        </Card>
+      ))}
     </div>
-    ))
-  )
+  );
 };
 
 export default Continents;
