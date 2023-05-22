@@ -26,10 +26,10 @@ const Continents = () => {
 
   return (
     <div className="flex justify-center gap-8">
-      {data.continents.map(({ code, name }: Continent) => (
+      {data.continents.map((continent: Continent, index: number) => (
         <Link
-          key={code}
-          to={`/continent/${code}`}
+          key={index}
+          to={`/continent/${continent.code}`}
           style={{ cursor: "pointer" }}
         >
           <Card
@@ -42,7 +42,7 @@ const Continents = () => {
               />
             }
           >
-            <Meta title={name} />
+            <Meta title={continent.name} />
           </Card>
         </Link>
       ))}

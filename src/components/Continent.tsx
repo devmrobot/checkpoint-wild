@@ -1,8 +1,10 @@
+// Fichier Continent.tsx
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
 import { Card } from "antd";
 import Meta from "antd/es/card/Meta";
+import Country from "./Country";
 
 interface Country {
   name: string;
@@ -23,24 +25,25 @@ const GET_CONTINENT_BY_ID = gql`
 `;
 
 const Continent = () => {
-  const { code } = useParams();
+  const { continent_code} = useParams();
 
   const { loading, error, data } = useQuery(GET_CONTINENT_BY_ID, {
-    variables: { code },
+    variables: { code : continent_code},
   });
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
   const { continent } = data;
+  console.log("==================", data);
 
   return (
     <div>
       <h1 className="flex justify-center text-5xl font-bold p-10 text-[#576ce2]">{continent.name}</h1>
       <div className="flex justify-center flex-wrap gap-8">
-        {continent.countries.map(({ code, name }: Country) => (
+        {continent.countries.map((country: Country, index: number) => (
           <Link
-            key={code}
-            to={`/country/${code}`}
+            key={index}
+            to={`/continent/${continent_code}/country/${country.code}`}
             style={{ cursor: "pointer" }}
           >
             <Card
@@ -53,7 +56,7 @@ const Continent = () => {
                 />
               }
             >
-              <Meta title={name} />
+              <Meta title={country.name} />
             </Card>
           </Link>
         ))}

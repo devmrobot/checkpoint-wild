@@ -25,10 +25,10 @@ const GET_COUNTRY_BY_ID = gql`
 
 const Country = () => {
 
-  const { code } = useParams();
+  const { country_code } = useParams();
 
   const { loading, error, data } = useQuery(GET_COUNTRY_BY_ID, {
-    variables: { code },
+    variables: { code : country_code },
   });
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;

@@ -9,8 +9,8 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/continent/:code" element={<Continent />} />
-        <Route path="/country/:code" element={<Country />} />
+        <Route path="/continent/:continent_code" element={<Continent />} />
+        <Route path="/continent/:code/country/:country_code" element={<Country />} />
       </Routes>
     </>
   );
