@@ -37,9 +37,9 @@ const Continent = () => {
     <div>
       <h1 className="flex justify-center text-5xl font-bold p-10 text-[#576ce2]">{continent.name}</h1>
       <div className="flex justify-center flex-wrap gap-8">
-        {continent.countries.map((country: Country) => (
+        {continent.countries.map(({ code, name }: Country) => (
           <Link
-            key={country.code}
+            key={code}
             to={`/country/${code}`}
             style={{ cursor: "pointer" }}
           >
@@ -53,7 +53,7 @@ const Continent = () => {
                 />
               }
             >
-              <Meta title={country.name} />
+              <Meta title={name} />
             </Card>
           </Link>
         ))}
