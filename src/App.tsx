@@ -1,16 +1,16 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
-import Continents from "./components/Continents";
-import Countries from "./components/Countries";
+import Country from "./components/Country";
+import Continent from "./components/Continent";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/continents/:id" element={<Continents />} />
-        <Route path="/countries/:id" element={<Countries />} />
+        <Route path="/continent/:code" element={<Continent />} />
+        <Route path="/country/:code" element={<Country />} />
       </Routes>
     </>
   );
