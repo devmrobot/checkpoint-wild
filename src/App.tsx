@@ -1,11 +1,18 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Home from "./pages/Home";
+import Continents from "./components/Continents";
+import Countries from "./components/Countries";
 
 function App() {
   return (
-    <div className="App">
-        <p>HELLO WORLD !</p>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/continents/:id" element={<Continents />} />
+        <Route path="/countries/:id" element={<Countries />} />
+      </Routes>
+    </>
   );
 }
 
